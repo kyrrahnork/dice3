@@ -20,3 +20,28 @@ Algorithm Die by Die
 
 This is the most straight forward way of generating ability scores, but you can see an obvious computer science problem here.
 We have loops in a loop, which may end up getting tossed out anyway if the ability score is lame. 
+
+thus the proposed code looks like this:
+
+RollDie(die)
+{
+var RandomNumber = Math.floor(Math.random() * die) + 1 ;
+
+this.setState({ 
+  DieValue : RandomNumber
+})
+}
+
+GenerateAbilityScore()
+{
+val firstDie = RollDie(6);
+val secondDie = RollDie(6);
+val thirdDie = RollDie(6);
+val fourthDie = RollDie(6);
+val lowest = Math.min(firstDie, secondDie,thirdDie,fourthDie);
+var abltScore = (firstDie + secondDie + thirdDie + fourthDie) - lowest;
+
+this.setState({ 
+  ProposedAbilityScore : abltScore
+})
+}

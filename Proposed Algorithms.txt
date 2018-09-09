@@ -1,1 +1,22 @@
-Proposed Algorithms
+Proposed Algorithms - This document is to help support the choice of dice rolling algorithms, and their pros and cons.
+
+Explanation
+
+In D&D, sometimes a player will need to roll and die to determine some sort of outcome. In cases where a single die is cast, this
+activity is trivial for a computer. A 6-sided die (D6) needs only call a function for a random number between 1 through 6, with
+relivant modifiers added after the die has been cast. However, often times in D&D players will need to roll more then one die. In 
+character creation, the play must cast four D6s to generate and random stat. This produces a random number between 4 and 24.
+However, after the four D6s are cast, the lowest numbered die is dropped from the pool of four. This limits the dice to three D6, but
+this limit will also skew the distibution of numbers so that slightly higher numbers are favored.
+
+Review this website for details -> https://anydice.com/articles/4d6-drop-lowest/
+
+Algorithm Die by Die
+1) Request four random numbers, generated between 1-6
+2) Sort the four numbers, so that the lowest value is known
+3) Add the three higher values together
+4) If the three higher values together equal 7 or less, drop the total value and return to step 1
+5) Record this value, and return to step 1 until 6 valid recorded values have been generated
+
+This is the most straight forward way of generating ability scores, but you can see an obvious computer science problem here.
+We have loops in a loop, which may end up getting tossed out anyway if the ability score is lame. 

@@ -7,12 +7,7 @@ import {
 } from 'react-native';
 
 export default class App extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     nums: [1, 2, 3]
-  //   }
-  // }
+
   state = {
       strength : this.GenerateAbilityScore(),
       dexterity : this.GenerateAbilityScore(),

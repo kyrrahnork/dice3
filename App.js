@@ -11,10 +11,13 @@ import SplashScreen from './android/app/src/Splash/Splash';
 
 import StartScreen from './android/app/src/Start/Start';
 
+import Abilities from './android/app/src/Abilities/Abilities';
+
 const RootStack = createStackNavigator(
   {
     Splash: SplashScreen,
-    Start: StartScreen  
+    Start: StartScreen,
+    Abilities: Abilities
   },
   {
     initialRouteName: 'Splash'

@@ -63,7 +63,6 @@ export default class BackgroundImage extends Component{
           <Button
             style={{
               textAlign: 'center',
-            
               fontSize: 40,
               color: 'red'
             }}
@@ -78,28 +77,11 @@ export default class BackgroundImage extends Component{
     }
 }
 
-class TestBackgroundImage extends Component{
-    render() {
-        return (
-            <BackgroundImage>
-                <Text style={styles.text}>button goes here</Text>
-            </BackgroundImage>
-        )
-    }
-}
-
 const styles = StyleSheet.create({
     backgroundImage:{
         flex:1,
         width:null,
         height:null,
         resizeMode:'cover'
-    },
-
-    // text: {
-    //     textAlign:'center',
-    //     color:'white',
-    //     backgroundColor: 'rgba(0,0,0,0)',
-    //     fontSize:32
-    // }
+    }
 });

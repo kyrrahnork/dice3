@@ -24,8 +24,9 @@ export default class StartScreen extends React.Component{
         const alignmentPickers = alignments.map( (alignment) => {
             return (
             <Picker.Item
-               label={alignment}
-               value={alignment}
+                key={alignment}
+                label={alignment}
+                value={alignment}
             />
             )
         } )
@@ -82,7 +83,23 @@ export default class StartScreen extends React.Component{
                         })
                     }
                 />
-                <Text></Text>
+                <View
+                style={{
+                        paddingTop: 50
+                        }}
+                >
+                    <Button
+                        style={{
+                        textAlign: 'center',
+                        fontSize: 40,
+                        color: 'red',
+                        paddingTop: 50
+                        }}
+                        title='press to confirm entries'
+                        onPress={()=> this.props.navigation.navigate('Abilities')}
+                    >
+                    </Button>
+                </View>
             </View>
         )
     }

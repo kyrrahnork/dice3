@@ -1,24 +1,41 @@
 import React from 'react';
 import {
     View,
-    Text
+    Text,
+    PanResponder,
+    Animated
 } from 'react-native';
 
 export default class StartScreen extends React.Component{
 
     state = {
-        str : 0
+        abilities: {}
     }
 
     componentDidMount(){
-       let x = this.GenerateAbilityScore();
-        this.setState({str:x})
+        let abilitiesNums = [];
+        this.setState({abilities: {
+            strength:0,
+            dexterity:0,
+            constitution:0,
+            intelligence:0,
+            wisdom:0,
+            charisma:0
+        }})
+
+        for(let i=0; i < 6; i++){
+            abilitiesNums.push(this.GenerateAbilityScore());
+        }
+        this.setState({abilitiesNums: abilitiesNums})
+
     }
 
     render(){
+        console.log("Scores generated are " + this.state.abilitiesNums);
         return(
             <View style={{flex:1, alignItems: 'center', justifyContent: 'center'}}>
-                <Text>StartScreen, Str = {this.state.str}</Text>
+                <Text>StartScreen, Str = {this.state.abilities.strength}</Text>
+                <Text>StartScreen, Str = {this.state.abilitiesNums}</Text>
             </View>
         )
     }
@@ -27,7 +44,7 @@ export default class StartScreen extends React.Component{
         return Math.floor(Math.random() * dieValue)+1;
     }
 
-    GenerateAbilityScore()
+    GenerateAbilityScore=() =>
     {
         do{
             var firstDie = this.RollDie(6);

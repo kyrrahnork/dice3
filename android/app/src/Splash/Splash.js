@@ -12,20 +12,8 @@ export default class BackgroundImage extends Component{
         header:null
     };
 
-    // render(){
-    //     return(
-    //             <Image source={require('../main/res/drawable/screen.png')}
-    //                 style={styles.backgroundImage}>
-
-    //                 {this.props.children}    
-
-    //             </Image>
-    //     )
-    // }
-
     render() {
         const resizeMode = 'center';
-    const text = 'I am some centered text';
 
     return (
     <View
@@ -69,7 +57,6 @@ export default class BackgroundImage extends Component{
             title='press to begin'
             onPress={()=> this.props.navigation.navigate('Start')}
           >
-            {text}
           </Button>
         </View>
     </View>

@@ -55,8 +55,7 @@ export default class StartScreen extends React.Component{
         
             var dieTotal = (firstDie + secondDie + thirdDie + fourthDie) - lowest;
 
-        }while(dieTotal < 8)
-        
+        } while(dieTotal < 8)      
 
         return dieTotal;
     }

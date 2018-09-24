@@ -3,13 +3,17 @@ import {
   StyleSheet,
   View,
   PanResponder,
-  Animated
+  Animated,
+  Dimensions, 
+  Text
 } from "react-native";
+
+let {height, width} = Dimensions.get('window');
 
 export default class PanTest extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       pan: new Animated.ValueXY()
@@ -30,6 +34,13 @@ export default class PanTest extends Component {
         null, { dx: this.state.pan.x, dy: this.state.pan.y }
       ]),
 
+      onPanResponderRelease: (e, gesture) => {
+        Animated.spring(this.state.pan, {
+          toValue: { x: 0, y: 0 },
+          friction: 5
+        }).start();
+      },
+
       onPanResponderGrant: (e, gesture) => {
         this.state.pan.setOffset({
         x: this._val.x,
@@ -41,24 +52,40 @@ export default class PanTest extends Component {
   }
 
   render() {
+    //console.log('Pantest says: ' + this.props.randomNum)  
     const panStyle = {
       transform: this.state.pan.getTranslateTransform()
     }
     return (
-        <Animated.View
-          {...this.panResponder.panHandlers}
-          style={[panStyle, styles.circle]}
-        />
+        <View>
+          <Animated.View
+            {...this.panResponder.panHandlers}
+              style={[panStyle, styles.circle]}
+            >
+            <Text style={styles.circleNum}>{this.props.randomNum}</Text>
+          </Animated.View>
+        </View>
     );
   }
 }
 
-let CIRCLE_RADIUS = 25;
+let circleMargin = Math.round((width - 300)/7);
+let CIRCLE_RADIUS = (width/14);
 let styles = StyleSheet.create({
   circle: {
     backgroundColor: "skyblue",
     width: CIRCLE_RADIUS * 2,
     height: CIRCLE_RADIUS * 2,
-    borderRadius: CIRCLE_RADIUS
+    borderRadius: CIRCLE_RADIUS,
+    marginTop: CIRCLE_RADIUS / 4,
+    marginTop: 10,
+    marginLeft: circleMargin/2,
+    marginRight: circleMargin/2,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+
+  circleNum: {
+    marginTop: 0
   }
 });

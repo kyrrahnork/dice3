@@ -15,6 +15,8 @@ import Abilities from './android/app/src/Abilities/Abilities';
 
 import PanTest from './android/app/src/Testing/PanTest';
 
+import Screen from './android/app/src/Testing/Screen';
+
 //this suppresse the yellow box warning
 import { YellowBox } from 'react-native'
 YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated'])
@@ -24,10 +26,11 @@ const RootStack = createStackNavigator(
     Splash: SplashScreen,
     Start: StartScreen,
     Abilities: Abilities,
-    PanTest: PanTest
+    PanTest: PanTest,
+    Screen: Screen   
   },
   {
-    initialRouteName: 'PanTest'
+    initialRouteName: 'Screen'
   }
 )
 

@@ -51,8 +51,7 @@ export default class Screen extends Component {
         <PanTest 
         style={styles.ballSpacing}
         key={Math.random()}
-        randomNum={num}
-        test="hi" 
+        randomNum={num} 
         />
       )
     })
@@ -70,6 +69,8 @@ export default class Screen extends Component {
     );  
   }
 }
+
+//drop ball code goes here
 
 const styles = StyleSheet.create({
   mainContainer: {

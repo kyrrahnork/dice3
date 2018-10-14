@@ -16,9 +16,15 @@ export default class PanTest extends Component {
     super(props);
 
     this.state = {
-      pan: new Animated.ValueXY()
+      pan: new Animated.ValueXY(),
+      place : {
+        x: 0,
+        y: 0
+      }
     };
   }
+
+
 
   componentWillMount() {
 
@@ -35,11 +41,15 @@ export default class PanTest extends Component {
       ]),
 
       onPanResponderRelease: (e, gesture) => {
-        Animated.spring(this.state.pan, {
-          toValue: { x: 0, y: 0 },
-          friction: 5
-        }).start();
+        this.setState({
+          place : this._val
+        })
+        // Animated.spring(this.state.pan, {
+        //   toValue: { x: 0, y: 0 },
+        //   friction: 5
+        // }).start();
       },
+      
 
       onPanResponderGrant: (e, gesture) => {
         this.state.pan.setOffset({
@@ -52,7 +62,7 @@ export default class PanTest extends Component {
   }
 
   render() {
-    //console.log('Pantest says: ' + this.props.randomNum)  
+    console.log(this.state.place);  
     const panStyle = {
       transform: this.state.pan.getTranslateTransform()
     }

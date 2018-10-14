@@ -62,7 +62,7 @@ export default class Screen extends Component {
         {abilitiesViews}
         <View style={styles.ballContainer} >
             <View style={styles.row}>
-            {circleViews}
+              {circleViews}
             </View>        
         </View>
       </View>
@@ -78,7 +78,6 @@ const styles = StyleSheet.create({
   },
   ballContainer: {
     flex: 1
-
   },
   row: {
     flexDirection: "row",
